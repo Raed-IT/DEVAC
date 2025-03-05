@@ -29,7 +29,17 @@ class JobOfferController extends Controller
 
    public function store(CreateJobOfferRequest $request)
     {
-        return $this->jobOfferService->createJobOffer($request->all());
+        return $this->jobOfferService->createJobOffer($request->only([
+            "employer_name",
+            "from_canadian_employer",
+            "offer_full_time",
+            "offer_non_seasonal",
+            "offer_outside_quebec",
+            "offer_meets_teer_requirement",
+            "salary_range",
+            "contract_duration",
+            "eligibility_criterion_id",
+        ]));
     }
 
 
@@ -41,7 +51,17 @@ class JobOfferController extends Controller
 
     public function update(UpdateJobOfferRequest $request ,JobOffer $jobOffer): JobOfferResource
     {
-        return    $this->jobOfferService->updateJobOffer($jobOffer, $request->all());
+        return $this->jobOfferService->updateJobOffer($jobOffer, $request->only([
+            "employer_name",
+            "from_canadian_employer",
+            "offer_full_time",
+            "offer_non_seasonal",
+            "offer_outside_quebec",
+            "offer_meets_teer_requirement",
+            "salary_range",
+            "contract_duration",
+            "eligibility_criterion_id",
+        ]));
     }
 
 

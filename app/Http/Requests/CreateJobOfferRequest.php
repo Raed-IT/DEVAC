@@ -19,8 +19,7 @@ class CreateJobOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'career_id' => 'sometimes|integer',
-            'employer_name' => 'nullable|string|max:255',
+             'employer_name' => 'nullable|string|max:255',
             'from_canadian_employer' => 'nullable|boolean',
             'offer_full_time' => 'nullable|boolean',
             'offer_non_seasonal' => 'nullable|boolean',
@@ -34,8 +33,6 @@ class CreateJobOfferRequest extends FormRequest
     public function messages()
     {
         return [
-            'career_id.required' => 'The career ID is required.',
-            'career_id.integer' => 'The career ID must be a valid integer.',
 
             'employer_name.string' => 'The employer name must be a valid string.',
             'employer_name.max' => 'The employer name cannot exceed 255 characters.',

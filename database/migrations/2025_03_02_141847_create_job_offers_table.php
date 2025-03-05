@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('job_offers', function (Blueprint $table) {
             $table->id("job_offer_id");
-            $table->foreignId("career_id")->nullable()->constrained("careers","career_id")->nullOnDelete();
+//            $table->foreignId("career_id")->nullable()->constrained("careers","career_id")->nullOnDelete();
             $table->string("employer_name",255)->nullable();
             $table->boolean("from_canadian_employer",)->nullable();
             $table->boolean("offer_full_time",)->nullable();
