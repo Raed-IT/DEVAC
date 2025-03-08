@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Http\Resources\JobOfferResource;
 use App\Models\JobOffer;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class JobOfferRepository implements JobOfferRepositoryInterface
 {
@@ -15,32 +16,30 @@ class JobOfferRepository implements JobOfferRepositoryInterface
         $this->jobOffer = $jobOffer;
     }
 
-    public function getAll():AnonymousResourceCollection
+    public function getAll():LengthAwarePaginator
     {
-        return JobOfferResource::collection($this->jobOffer->paginate());
+        return $this->jobOffer->paginate();
     }
 
-    public function create(array $data): JobOfferResource
+    public function create(array $data): JobOffer
     {
-        return new JobOfferResource($this->jobOffer->create($data));
+        return $this->jobOffer->create($data);
     }
 
-    public function getById(JobOffer $jobOffer): JobOfferResource
+    public function getById(JobOffer $jobOffer): JobOffer
     {
-        return new  JobOfferResource($jobOffer);
+        return $jobOffer;
     }
 
-    public function update(JobOffer $jobOffer, array $data): JobOfferResource
+    public function update(JobOffer $jobOffer, array $data): JobOffer
     {
         $jobOffer->update($data);
-        return new JobOfferResource($jobOffer);
+        return $jobOffer;
     }
 
-    public function delete(JobOffer $jobOffer)
+    public function delete(JobOffer $jobOffer): ?bool
     {
-
-        $jobOffer->delete() ;
-        return response()->json(['message' => 'Job offer '.$jobOffer->id .' deleted successfully']);
+        return $jobOffer->delete() ;
 
     }
 }

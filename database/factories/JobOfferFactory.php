@@ -25,7 +25,7 @@ class JobOfferFactory extends Factory
             "offer_meets_teer_requirement" => $this->faker->boolean(),
             "salary_range" => $this->faker->numberBetween(100, 1000),
             "contract_duration" => $this->faker->numberBetween(100, 1000),
-            "eligibility_criterion_id" => $this->faker->numberBetween(1,50),
+            "eligibility_criterion_id" => $this->faker->numberBetween(1,3),
          ];
     }
 }

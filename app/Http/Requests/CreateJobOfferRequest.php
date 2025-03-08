@@ -25,8 +25,8 @@ class CreateJobOfferRequest extends FormRequest
             'offer_non_seasonal' => 'nullable|boolean',
             'offer_outside_quebec' => 'nullable|boolean',
             'offer_meets_teer_requirement' => 'nullable|boolean',
-            'salary_range' => 'nullable|string|max:100',
-            'contract_duration' => 'nullable|integer',
+            'salary_range' => 'nullable|numeric|max:100',
+            'contract_duration' => 'nullable|numeric',
             'eligibility_criterion_id' => 'nullable|exists:eligibility_criterion,criterion_id',
         ];
     }
